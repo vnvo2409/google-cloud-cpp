@@ -638,6 +638,13 @@ TEST(StrictIdempotencyPolicyTest, UploadChunk) {
   EXPECT_TRUE(policy.IsIdempotent(request));
 }
 
+TEST(StrictIdempotencyPolicyTest, DeleteResumableUpload) {
+  StrictIdempotencyPolicy policy;
+  internal::DeleteResumableUploadRequest request(
+      "test-bucket-name", "test-object-name", "test-upload-id");
+  EXPECT_TRUE(policy.IsIdempotent(request));
+}
+
 }  // namespace
 }  // namespace STORAGE_CLIENT_NS
 }  // namespace storage

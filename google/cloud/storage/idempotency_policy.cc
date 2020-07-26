@@ -116,6 +116,10 @@ bool AlwaysRetryIdempotencyPolicy::IsIdempotent(
     internal::UploadChunkRequest const&) const {
   return true;
 }
+bool AlwaysRetryIdempotencyPolicy::IsIdempotent(
+    internal::DeleteResumableUploadRequest const&) const {
+  return true;
+}
 
 bool AlwaysRetryIdempotencyPolicy::IsIdempotent(
     internal::ListBucketAclRequest const&) const {
@@ -381,6 +385,11 @@ bool StrictIdempotencyPolicy::IsIdempotent(
 
 bool StrictIdempotencyPolicy::IsIdempotent(
     internal::UploadChunkRequest const&) const {
+  return true;
+}
+
+bool StrictIdempotencyPolicy::IsIdempotent(
+    internal::DeleteResumableUploadRequest const&) const {
   return true;
 }
 
